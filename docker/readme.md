@@ -150,7 +150,10 @@ docker container run -p 5000:5000 -d -m 512m --cpu-quota=50000 in28min/hello-wor
 # Show Docker system events
 docker system events
 
-
+# docker container pause or unpause and history
+docker container pause/unpause containerID
+or docker container history containerID
+or docker inspect container containerID
 
 
 # Show live resource usage statistics of a Docker container with a given container ID or name
@@ -308,7 +311,9 @@ docker build -t in28min/hello-world-java:0.0.1.RELEASE .
 # Push the Docker image with the specified tag to a registry
 docker push in28min/hello-world-java:0.0.1.RELEASE
 
-
+# another commands for logs
+docker logs id container
+or docker logs -f idcontainer the first 4 letters  for checking live logs
 
 
 # Build a Docker image for a Python hello world application with a given tag
@@ -328,9 +333,24 @@ docker push in28min/hello-world-nodejs:0.0.1.RELEASE
 
 ```
 
+
 ### Host Networking in Docker for Mac and Windows
 
 - https://docs.docker.com/network/host/
 
 >The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
 
+###
+If you are using Windows 10 and docker version : Version 2.0.0.3 (31259) or above, you would need to Enable Expose Daemon without TLS option!
+
+Step 1: Right click on "Docker Desktop is running icon "
+
+Step 2: Click on Settings
+
+Step 3: In “General Tab” you must enable checkbox “Expose Daemon on tcp://localhost:2375 without TLS”
+
+
+
+This is the error you would see in the subsequent steps if you do not enable this - java.net.ConnectException: Connection refused: connect
+
+#
